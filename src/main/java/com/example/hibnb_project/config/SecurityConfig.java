@@ -10,7 +10,6 @@ import com.example.hibnb_project.jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,54 +27,57 @@ import java.util.List;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
     private final JwtUtil jwtUtil;
-    private final @Lazy AuthenticationManager authenticationManager;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final UserRepository userRepository;
+    private final BlacklistRepository blacklistRepository;
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
     private final CustomerAccessDeniedHandler customerAccessDeniedHandler;
-    private final BlacklistRepository blacklistRepository;
 
-
+    // AuthenticationManager 빈 생성
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        return config.getAuthenticationManager();
+    public AuthenticationManager authenticationManager() throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 
+    // PasswordEncoder 빈 생성
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // SecurityFilterChain 설정
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .formLogin(form -> form.disable())
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .authorizeHttpRequests(authorize -> {
-                    authorize.requestMatchers("/**").permitAll();
-                    authorize.requestMatchers("/", "/api/login", "/api/join", "/api/board/postlist", "/api/reissue", "/api/re-confirm-id-email", "/api/re-confirm-id", "/api/re-confirm-pw", "/api/accom/list", "/api/accom/list/detailedlist", "/api/accom/post","/api/accom/test", "/api/kakao/**").permitAll();
+                    // 여기 순서 주의: 구체적인 경로를 먼저 쓰고, 마지막에 anyRequest() 호출해야 함
+                    authorize.requestMatchers("/", "/api/login", "/api/join", "/api/board/postlist", "/api/reissue", "/api/re-confirm-id-email", "/api/re-confirm-id", "/api/re-confirm-pw", "/api/accom/list", "/api/accom/list/detailedlist", "/api/accom/post", "/api/accom/test", "/api/kakao/**").permitAll();
                     authorize.requestMatchers("/api/admin/**").hasRole("ADMIN");
                     authorize.anyRequest().authenticated();
                 })
                 .cors(cors -> cors.configurationSource(request -> {
-                    CorsConfiguration corsConfiguration = new CorsConfiguration();
-                    corsConfiguration.addAllowedOrigin("http://localhost:3000");
-                    corsConfiguration.addAllowedOrigin("http://3.34.237.122");
-                    corsConfiguration.addAllowedHeader("*");
-                    corsConfiguration.setExposedHeaders(List.of("Authorization"));// 헤더를 읽을 수 있도록 허용
-                    corsConfiguration.addAllowedMethod("*");
-                    corsConfiguration.setAllowCredentials(true); // 헤더를 읽을 수 있도록 허용
-                    return corsConfiguration;
+                    CorsConfiguration corsConfig = new CorsConfiguration();
+                    corsConfig.addAllowedOrigin("http://localhost:3000");
+                    corsConfig.addAllowedOrigin("http://3.34.237.122");
+                    corsConfig.addAllowedHeader("*");
+                    corsConfig.setExposedHeaders(List.of("Authorization"));
+                    corsConfig.addAllowedMethod("*");
+                    corsConfig.setAllowCredentials(true);
+                    return corsConfig;
                 }))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(new JwtFilter(this.jwtUtil), JwtLoginFilter.class)
-                .addFilterAt(new JwtLoginFilter(this.jwtUtil, authenticationManager(authenticationConfiguration), this.userRepository, this.blacklistRepository), UsernamePasswordAuthenticationFilter.class); //addfilter > 마지막에 ,
-//                .exceptionHandling(exception -> {
-//                    exception.authenticationEntryPoint(this.customAuthenticationEntryPoint);
-//                    exception.accessDeniedHandler(this.customerAccessDeniedHandler);
-//                });
+                // 필터 순서 조절: JwtLoginFilter는 UsernamePasswordAuthenticationFilter 자리에 등록
+                .addFilterBefore(new JwtFilter(jwtUtil), JwtLoginFilter.class)
+                .addFilterAt(new JwtLoginFilter(jwtUtil, authenticationManager(), userRepository, blacklistRepository), UsernamePasswordAuthenticationFilter.class)
+        //.exceptionHandling(exceptions -> {
+        //    exceptions.authenticationEntryPoint(customAuthenticationEntryPoint);
+        //    exceptions.accessDeniedHandler(customerAccessDeniedHandler);
+        //})
+        ;
         return http.build();
     }
 }
-
