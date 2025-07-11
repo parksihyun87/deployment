@@ -1,0 +1,130 @@
+[33mcommit c4b464da2cb7128aa9b08e0094249ad35a7e67d7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev_mingyu[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: ef21f08 5abd511
+Author: parkk-min <mingeu0821@naver.com>
+Date:   Tue Jun 10 14:17:50 2025 +0900
+
+    Merge pull request #9 from choi-seonah/dev_mingyu
+    
+    Dev mingyu
+
+[33mcommit 5abd5116d730224a3626ac734838d4942300eaba[m
+Merge: f22a3cb ef21f08
+Author: parkk-min <mingeu0821@naver.com>
+Date:   Tue Jun 10 14:17:44 2025 +0900
+
+    Merge branch 'main' into dev_mingyu
+
+[33mcommit f22a3cb5c12e61223156777f475f0b86ae11a04d[m[33m ([m[1;31morigin/dev_mingyu[m[33m)[m
+Author: 박시현 <solarhyun87@gmail.com>
+Date:   Tue Jun 10 14:15:08 2025 +0900
+
+    mingyu frontend basic
+
+[33mcommit ef21f08f929957ec4cc11e30a93e67292e651700[m
+Merge: 0584b21 1974159
+Author: choi-seonah <81469401+choi-seonah@users.noreply.github.com>
+Date:   Tue Jun 10 11:56:44 2025 +0900
+
+    Merge pull request #8 from choi-seonah/dev_seryeong
+    
+    Dev seryeong
+
+[33mcommit 19741599722309fcc2ffb2172250dff6ce58bd5c[m
+Merge: 6406e63 0584b21
+Author: choi-seonah <81469401+choi-seonah@users.noreply.github.com>
+Date:   Tue Jun 10 11:56:34 2025 +0900
+
+    Merge branch 'main' into dev_seryeong
+
+[33mcommit 6406e63ea2d887a7dd97f699b02f46fecaba6995[m
+Author: sr0727 <seolaseryeong0727@naver.com>
+Date:   Tue Jun 10 11:55:01 2025 +0900
+
+    seryeong frontend basic
+
+[33mcommit 0584b21b5fc8c11be306072281ab3eef2403e034[m
+Author: choi-seonah <dondo0412@naver.com>
+Date:   Tue Jun 10 11:39:28 2025 +0900
+
+    apiInstance add
+
+[33mcommit 7089ab517ef7a01c53e95720c9215570b97eab58[m
+Author: reroad-hub <mingeu0821@naver.com>
+Date:   Tue Jun 10 00:19:17 2025 +0900
+
+    park
+
+[33mcommit 9b2bcab3939e574e1da77836e238d658e80af445[m[33m ([m[1;31morigin/dev_seryeong[m[33m)[m
+Author: sr0727 <seolaseryeong0727@naver.com>
+Date:   Mon Jun 9 18:14:26 2025 +0900
+
+    내정보
+
+[33mcommit 05a9461f19fcc6d8c41f236bbcf8e469ecb5d6fe[m
+Author: parkk-min <mingeu0821@naver.com>
+Date:   Mon Jun 9 18:13:17 2025 +0900
+
+    hi
+
+[33mcommit 405c5866647e1ccad550096f3b2cc333f984409f[m[33m ([m[1;32mmain[m[33m)[m
+Merge: b01c63d eedade0
+Author: meanin9less <aoaaoadhkdwk@gmail.com>
+Date:   Mon Jun 9 17:36:17 2025 +0900
+
+    Merge pull request #3 from choi-seonah/dev_hibnb_back
+    
+    first back
+
+[33mcommit eedade0ab0c2b7228b07a3577cad8a9648a6da66[m
+Author: meanin9less <aoaaoadhkdwk@gmail.com>
+Date:   Mon Jun 9 17:31:54 2025 +0900
+
+    first back
+
+[33mcommit 4b93d896b1ab36fa1e98ed9e22c66b0d8c001205[m
+Author: parkk-min <mingeu0821@naver.com>
+Date:   Mon Jun 9 14:52:20 2025 +0900
+
+    a
+
+[33mcommit b01c63d66f250e02ec9d5a34bccbfa268555c9f2[m
+Merge: a7c44f3 0a0240a
+Author: parkk-min <mingeu0821@naver.com>
+Date:   Mon Jun 9 14:32:54 2025 +0900
+
+    Merge pull request #2 from choi-seonah/dev_mingyu
+    
+    Dev mingyu
+
+[33mcommit 0a0240af2c225842d3d9924c42133f5ac8c5657c[m
+Author: 박시현 <solarhyun87@gmail.com>
+Date:   Mon Jun 9 14:30:20 2025 +0900
+
+    a
+
+[33mcommit 763954fb3efd8740401039653ce5eb74b909dd00[m
+Author: 박시현 <solarhyun87@gmail.com>
+Date:   Mon Jun 9 13:13:36 2025 +0900
+
+    test
+
+[33mcommit a7c44f328664313661583d025493fbac63cba409[m
+Merge: 529c684 a4f10b9
+Author: choi-seonah <81469401+choi-seonah@users.noreply.github.com>
+Date:   Mon Jun 9 12:57:46 2025 +0900
+
+    Merge pull request #1 from choi-seonah/dev_seonah
+    
+    frontend create
+
+[33mcommit a4f10b9d65720b514f9034884070da0dd1ffd749[m[33m ([m[1;31morigin/dev_seonah[m[33m)[m
+Author: choi-seonah <dondo0412@naver.com>
+Date:   Mon Jun 9 12:56:52 2025 +0900
+
+    frontend create
+
+[33mcommit 529c68416d2ef147368adbb7356cd703df0e8683[m
+Author: choi-seonah <dondo0412@naver.com>
+Date:   Mon Jun 9 12:47:27 2025 +0900
+
+    first commit
