@@ -1,0 +1,835 @@
+/* 검색 폼 */
+.main-search {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 1100px;
+    width: 1100px;
+    margin: 10px auto;
+}
+
+.main-text {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 1100px;
+    width: 1100px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.search-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 200px;
+    position: relative;
+    padding: -20px;
+}
+
+.search-item label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.search-item__input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 17px;
+    transition: all 0.2s ease;
+    background: #fff;
+    width: 180px;
+}
+
+.search-item__input:focus {
+    border-color: #6c63ff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+}
+
+.destination-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+    margin-top: 4px;
+}
+
+.destination-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.destination-item:hover {
+    background: #f0f0f0;
+}
+
+.search-button {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #6c63ff, #a683e3);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+    flex: 1 1 100%;
+}
+
+.search-button:hover {
+    background: linear-gradient(135deg, #5a54e0, #9270db);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(108, 99, 255, 0.35);
+}
+
+.detail-search-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1160px;
+}
+
+.detail-filter {
+    width: 200px;
+    position: absolute;
+    left: 100px;
+}
+
+.detail-filter-btn {
+    padding: 10px 16px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    margin-top: 12px;
+    width: 300px;
+}
+
+.recommend-img {
+    width: 100%;
+    height: 300px;
+}
+
+.top5-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-evenly;
+    width: 1160px;
+}
+
+.top5-card {
+    background-color: #ffff;
+    border: 1px solid #ffff;
+    border-radius: 20px;
+    width: 350px;
+    height: 600px;
+    text-align: center;
+}
+
+.accom-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* ✅ 왼쪽 정렬로 카드 나열 */
+    gap: 20px; /* ✅ 카드 간 여백 */
+    padding: 20px;
+}
+
+.accom-card {
+    width: 300px; /* ✅ 고정된 너비로 정렬 깔끔하게 */
+    margin: 10px 10px 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.accom-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.swiper-slide {
+    height: 500px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.accom-swiper-wrapper {
+    padding: 0 !important;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.accom-swiper {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.accom-swiper-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.accom-card-content {
+    margin: 50px;
+    padding: 0;
+}
+
+.accom-card-box {;
+    width: 200px;
+}
+
+.filter-allSection {
+    padding: 0 10px 0 0;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    width: 200px;
+    background-color: #ffffff;
+}
+
+.filter-section {
+    width: 180px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    padding: 0 15px;
+}
+
+.filter-section-title {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.filter-section-type {
+    width: 180px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    padding: 15px;
+}
+
+.filter-section-input {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 17px;
+    transition: all 0.2s ease;
+    background: #fff;
+    width: 170px;
+    text-align: center;
+}
+
+.filter-buttons {
+    padding: 10px 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+
+    width: 70px;
+    margin: 15px;
+}
+
+/* 내정보 확인 및 수정 */
+.myinfo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    font-family: sans-serif;
+}
+
+.myinfo-form {
+    width: 60%;
+    max-width: 700px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 50px 0 30px;
+}
+
+.myinfo-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.myinfo-text {
+    width: 100%;
+    text-align: left;
+}
+
+.myinfo-label {
+    width: 100%;
+    text-align: left;
+    display: block;
+}
+
+.myinfo-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.myinfo-button {
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 150px;
+    align-self: center;
+    text-align: center;
+}
+
+/* 예약 정보 획인 변경 및 취소 */
+.reserve-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.reserve-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.no-reservations {
+    text-align: center;
+}
+
+.reserve-card {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.reserve-card.selected {
+    box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
+}
+
+.reserve-card:not(.selected) {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.reserve-title-text {
+    margin-bottom: 8px;
+    color: #6C63FFFF;
+}
+
+.reserve-text {
+    margin: 4px 0;
+    color: #555;
+}
+
+
+.reserve-details label {
+    display: block;
+    margin-bottom: 12px;
+    color: #555;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.reserve-details input[type="date"],
+.reserve-details input[type="number"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.reserve-details input:focus {
+    border-color: #FF5A5F;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 90, 95, 0.1);
+}
+
+
+.reserve-details .reserve-button {
+    margin-top: 12px;
+    margin-right: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+.reserve-status {
+    margin: 8px 0;
+    font-weight: bold;
+}
+
+.reserve-status.completed {
+    color: green;
+}
+
+.reserve-status.cancelled {
+    color: gray;
+}
+
+.reserve-buttons {
+    margin-top: 10px;
+}
+
+.reserve-button {
+    padding: 10px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.reserve-button.cancel {
+    background-color: var(--primary-color);
+}
+
+.reserve-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+/* 결제하기 */
+
+.payment {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.payment-text {
+    background-color: #ffff;
+    border-radius: 20px;
+    border: 1px solid #ffff;
+    width: 300px;
+    height: 500px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+/* 이용 내역 */
+.room-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.room-empty {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 18px;
+    color: #7d7474;
+    font-weight: 500;
+}
+
+.room-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.room-list {
+    list-style: none;
+    padding: 0;
+}
+
+.room-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 27px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 28px;
+    flex-direction: column; /* 수직 정렬 */
+    align-items: center; /* 가운데 정렬 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.room-place {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.room-date {
+    color: #888;
+    font-size: 18px;
+    margin-top: 4px;
+}
+
+.room-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.room-btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.room-review-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* 리뷰 모달 오버레이 */
+.review-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* 리뷰 모달 */
+.review-modal {
+    background: #fff;
+    padding: 26px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* 제목 */
+.review-modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+/* 별점 셀렉트 */
+.rating-select {
+    width: 399px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 12px;
+}
+
+.rating-select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    outline: none;
+}
+
+/* 텍스트영역 */
+.review-textarea {
+    width: 382px;
+    height: 100px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 14px;
+}
+
+/* 버튼들 */
+.review-modal-footer {
+    margin-top: 16px;
+    text-align: right;
+}
+
+.review-submit-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.review-cancel-btn {
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.review-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+}
+
+/* 신고 모달 오버레이 */
+.report-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* 신고 모달 */
+.report-modal {
+    background: #fff;
+    padding: 26px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+/* 제목 */
+.report-modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+/* 신고 사유 레이블 */
+.report-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.report-label select,
+.report-label textarea {
+    display: block;
+    margin-top: 6px;
+}
+
+/* 셀렉트 박스 */
+.report-select {
+    width: 399px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 12px;
+}
+
+.report-select:focus {
+    border-color: #e26a6a;
+    box-shadow: 0 0 5px rgba(226, 106, 106, 0.5);
+    outline: none;
+}
+
+/* 텍스트영역 */
+.report-textarea {
+    width: 382px;
+    height: 100px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 14px;
+}
+
+/* 버튼들 */
+.report-modal-footer {
+    margin-top: 16px;
+    text-align: right;
+}
+
+.report-submit-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.report-cancel-btn {
+    background-color: #999;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.report-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+}
+
+
+/* 회원 탈퇴 */
+.quit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    font-family: sans-serif;
+}
+
+.quit-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.quit-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.quit-button-danger {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.quit-button-cancel {
+    background-color: #eee;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,16 @@
+@import './css/variables.css';
+@import './css/layout.css';
+@import './css/components.css';
+@import './css/form.css';
+@import './css/adminreport.css';
+
+body {
+    margin: 0;
+    font-family: var(--main-font);
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    background-attachment: fixed; /* ✅ 스크롤해도 배경이 끊기지 않게 */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
